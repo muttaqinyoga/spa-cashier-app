@@ -31,10 +31,10 @@ Route::group(['middleware' => 'auth'], function () {
     })->where('path', '[\/\w\.-]*');
     // Route::get('/admin/home', [HomeController::class, 'index']);
     // Route::get('/admin/categories', [CategoryController::class, 'index']);
-    // Route::get('/admin/categories/get', [CategoryController::class, 'getListCategory']);
+    Route::get('/api/admin/categories/get', [CategoryController::class, 'getListCategory']);
     // Route::post('/admin/categories/save', [CategoryController::class, 'save']);
     // Route::post('/admin/categories/update', [CategoryController::class, 'update']);
-    // Route::delete('/admin/categories/delete', [CategoryController::class, 'delete']);
+    Route::delete('/api/admin/categories/delete', [CategoryController::class, 'delete']);
     // Route::get('/admin/foods', [FoodController::class, 'index']);
     // Route::get('/admin/foods/get', [FoodController::class, 'getListFood']);
     // Route::post('/admin/foods/save', [FoodController::class, 'save']);

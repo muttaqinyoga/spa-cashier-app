@@ -8,6 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Aplikasi Kasir Kafe</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/simple-datatables.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 </head>
 
 <body>
@@ -17,6 +20,7 @@
         const csrf = `{{ csrf_token() }}`;
         const credentials = `{{ Auth::user()->username }}`;
         const baseUrl = `{{ url('') }}`;
+        const assetUrl = `{{ asset('') }}`
     </script>
     <script src="{{ asset('js/loadingOverlay.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>

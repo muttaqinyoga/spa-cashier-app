@@ -9,28 +9,35 @@ const routes = {
         controller: CategoryController,
     },
 };
-let view = null;
+
 function router() {
-    view = routes[location.pathname];
-    console.log(view);
-    const loading = APP_LOADING.activate();
+   let view = routes[location.pathname];
     if (view) {
         document.title = view.title;
+        const loading = APP_LOADING.activate();
         if (view.controller) {
             if (view.controller.redirect) {
-                // history.replaceState(
-                //     "",
-                //     "",
-                //     `${baseUrl}${view.controller.redirect}`
-                // );
-                view = router[view.controller.redirect];
+                history.pushState(
+                    "",
+                    "",
+                    `${baseUrl}${view.controller.redirect}`
+                );
+                APP_LOADING.cancel(loading);
                 router();
+                return;
             }
+            setTimeout(() => {
+                app.innerHTML = view.render();
+                CategoryController.init(loading); 
+            }, 500);
+        } else{
+            setTimeout(() => {
+                APP_LOADING.cancel(loading);
+                app.innerHTML = view.render();
+            }, 500);
         }
-        setTimeout(() => {
-            APP_LOADING.cancel(loading);
-            app.innerHTML = view.render();
-        }, 500);
+        
+        
     } else {
         history.replaceState("", "", "/admin");
         router();

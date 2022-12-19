@@ -1,6 +1,6 @@
 import "./header.js";
 import "../components/utility/toast.js";
-
+import "../components/utility/ConfirmDelete.js";
 export default () =>
     /*html*/
     `
@@ -20,7 +20,6 @@ export default () =>
                     <table id="foodTables" class="table table-striped table-responsive table-bordered">
 
                     </table>
-
                 </div>
             </div>
         </div>
@@ -64,5 +63,6 @@ export default () =>
             </div>
         </div>
     </div>
+    <delete-modal></delete-modal>
     <toast-app status="danger" message="berhasil"></toast-app>
 `;

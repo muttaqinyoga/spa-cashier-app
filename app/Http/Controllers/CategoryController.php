@@ -100,7 +100,7 @@ class CategoryController extends Controller
     public function delete(Request $request)
     {
         try {
-            $category = Category::findOrFail($request->category_delete_id);
+            $category = Category::findOrFail($request->delete_id);
             $category->delete();
             return response()->json(['status' => 'success', 'message' => "$category->name has been deleted"]);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
