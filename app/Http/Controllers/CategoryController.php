@@ -51,13 +51,7 @@ class CategoryController extends Controller
                 $newCategory->image = self::DEFAULT_IMAGE_CATEGORY;
             }
             $newCategory->save();
-            $payload = [
-                'id' => $newCategory->id,
-                'name' => $newCategory->name,
-                'image' => $newCategory->image,
-                'created_at' => $newCategory->created_at
-            ];
-            return response()->json(['status' => 'created', 'message' => 'New category added', 'data' => $payload], 201);
+            return response()->json(['status' => 'created', 'message' => 'New category added'], 201);
         } catch (Throwable $e) {
             return response()->json(['status' => 'failed', 'message' => 'Could not save input request'], 500);
         }
@@ -67,13 +61,13 @@ class CategoryController extends Controller
     {
         try {
             $validation = \Validator::make($request->all(), [
-                'category_edit_name' => 'required|string|min:3|max:50|unique:categories,name,' . $request->category_edit_id . ',id',
+                'category_edit_name' => 'required|string|min:3|max:50|unique:categories,name,' . $request->edit_id . ',id',
                 'category_edit_image' => 'image|mimes:jpeg,png,jpg|max:100'
             ]);
             if ($validation->fails()) {
                 return response()->json(['status' => 'failed', 'errors' => $validation->errors()], 400);
             }
-            $category = Category::findOrFail($request->category_edit_id);
+            $category = Category::findOrFail($request->edit_id);
             $category->name = $request->category_edit_name;
             $category->slug = \Str::slug($request->category_edit_name, '-');
             if ($request->file('category_edit_image')) {
@@ -85,13 +79,7 @@ class CategoryController extends Controller
                 $category->image = $imageName;
             }
             $category->update();
-            $payload = [
-                'id' => $category->id,
-                'name' => $category->name,
-                'image' => $category->image,
-                'updated_at' => $category->updated_at
-            ];
-            return response()->json(['status' => 'success', 'message' => 'Category data has beens updated', 'data' => $payload], 200);
+            return response()->json(['status' => 'success', 'message' => 'Category has beens updated'], 200);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['status' => 'failed', 'message' => 'Could not update requested data'], 400);
         }

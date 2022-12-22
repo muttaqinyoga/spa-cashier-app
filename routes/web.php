@@ -32,8 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/admin/home', [HomeController::class, 'index']);
     // Route::get('/admin/categories', [CategoryController::class, 'index']);
     Route::get('/api/admin/categories/get', [CategoryController::class, 'getListCategory']);
-    // Route::post('/admin/categories/save', [CategoryController::class, 'save']);
-    // Route::post('/admin/categories/update', [CategoryController::class, 'update']);
+    Route::post('/api/admin/categories/save', [CategoryController::class, 'save']);
+    Route::post('/api/admin/categories/update', [CategoryController::class, 'update']);
     Route::delete('/api/admin/categories/delete', [CategoryController::class, 'delete']);
     // Route::get('/admin/foods', [FoodController::class, 'index']);
     // Route::get('/admin/foods/get', [FoodController::class, 'getListFood']);

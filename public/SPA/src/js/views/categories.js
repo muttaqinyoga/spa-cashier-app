@@ -55,8 +55,52 @@ export default () =>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
                         </button>
-                        <button type="submit" class="btn btn-success ml-1" id="btnSubmitCategory">
+                        <button type="submit" class="btn btn-success ml-1">
                             Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-left" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModal" role="dialog">
+        <div class="modal-dialog modal-dialog-top modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h4 class="modal-title text-light">Edit Food Category</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                    </button>
+                </div>
+                <form method="post" id="editCategoryForm">
+                    <input type="hidden" name="_token" value="${csrf}" >
+                    <input type="hidden" name="edit_id" id="edit_id">
+                    <div class="modal-body">
+                        <label>Name</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Enter category food name..." class="form-control" name="category_edit_name" id="category_edit_name">
+                            <div class="invalid-feedback" id="category_edit_name_feedback">
+
+                            </div>
+                        </div>
+                        <label>Image</label>
+                        <div class="form-group mb-2">
+                            <img src="" class="img-fluid d-block" alt="food-categories" width="100" id="current_category_edit_image">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="file" name="category_edit_image" id="category_edit_image">
+                            <div class="invalid-feedback" id="category_edit_image_feedback">
+
+                            </div>
+                        </div>
+                        <small class="text-info">* Let it blank if image would not change</small>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-warning ml-1">
+                            Update
                         </button>
                     </div>
                 </form>

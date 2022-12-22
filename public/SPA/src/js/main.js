@@ -11,12 +11,13 @@ const routes = {
 };
 
 function router() {
-   let view = routes[location.pathname];
+    let view = routes[location.pathname];
     if (view) {
         document.title = view.title;
-        const loading = APP_LOADING.activate();
+
         if (view.controller) {
             if (view.controller.redirect) {
+                const loading = APP_LOADING.activate();
                 history.pushState(
                     "",
                     "",
@@ -26,18 +27,15 @@ function router() {
                 router();
                 return;
             }
-            setTimeout(() => {
-                app.innerHTML = view.render();
-                CategoryController.init(loading); 
-            }, 500);
-        } else{
+            app.innerHTML = view.render();
+            CategoryController.init();
+        } else {
+            const loading = APP_LOADING.activate();
             setTimeout(() => {
                 APP_LOADING.cancel(loading);
                 app.innerHTML = view.render();
             }, 500);
         }
-        
-        
     } else {
         history.replaceState("", "", "/admin");
         router();

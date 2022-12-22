@@ -52,23 +52,21 @@
     </div>
 
     <script>
-        const loginBtn = document.querySelector("#loginBtn");
-        const formLogin = document.querySelector("#formLogin");
-        let hasSubmit = false;
-        formLogin.addEventListener("submit", e => {
-            e.preventDefault();
-            if (!hasSubmit) {
-                hasSubmit = true;
-                loginBtn.innerText = "Signing...";
-                loginBtn.style.cursor = "not-allowed";
-                setTimeout(() => {
+        const loginModule = {
+            init: function() {
+                const loginBtn = document.querySelector("#loginBtn");
+                const formLogin = document.querySelector("#formLogin");
+                console.log(formLogin);
+                formLogin.addEventListener("submit", e => {
+                    e.preventDefault();
+                    loginBtn.innerText = "Signing...";
+                    loginBtn.style.cursor = "not-allowed";
                     formLogin.submit();
-                    loginBtn.innerText = "Sign in";
-                    loginBtn.style.cursor = "pointer";
-                    hasSubmit = false;
-                }, 1000);
+                });
             }
-
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            loginModule.init();
         });
     </script>
 </body>

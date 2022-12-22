@@ -19,7 +19,7 @@ class DeleteModal extends HTMLElement {
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                         Cancel
                                                     </button>
-                                                    <button type="submit" class="btn btn-danger ml-1" id="btnSubmitDelete">
+                                                    <button type="submit" class="btn btn-danger ml-1" >
                                                         Delete
                                                     </button>
                                                 </div>
