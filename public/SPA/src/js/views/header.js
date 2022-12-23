@@ -17,7 +17,7 @@ class Header extends HTMLElement {
                                             <a class="nav-link categories" href="/admin/categories" data-link>Category List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link foods" href="{{ url('admin/foods') }}">Food List</a>
+                                            <a class="nav-link foods" href="/admin/foods" data-link>Food List</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link orders" href="{{ url('admin/orders') }}">Orders</a>

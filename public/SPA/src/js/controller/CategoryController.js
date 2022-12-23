@@ -5,6 +5,7 @@ const category = {
     view: categories,
     redirect: null,
     init: function () {
+        console.log("oke");
         loadCategories();
         let loading = APP_LOADING.activate();
         let FoodDataTables = null;
@@ -178,7 +179,6 @@ const category = {
                     console.error;
                 });
         });
-
         // Update Category
         editCategoryForm.addEventListener("submit", (e) => {
             e.preventDefault();
